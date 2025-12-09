@@ -1,14 +1,5 @@
-/* const heading = React.createElement(
-  "h1",
-  { id: "heading" },
-  "This is react create JS react"
-);
-
-console.log("reactelement7", heading); // This will return a React object
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading); // Here is the actual converting React object to html element
- */
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 // Complex structure of React elements
 const parent = React.createElement("div", { id: "parent" }, [
