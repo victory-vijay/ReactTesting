@@ -17,7 +17,7 @@ const resList = [
     id: 103,
     resName: "Hyderabad chefs",
     cuisine: "Biriyani",
-    rating: "3.4",
+    rating: "4.4",
     time: "98 minutes",
   },
   {

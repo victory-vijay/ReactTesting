@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react-dom": "^19.2.1",
+    "react-shimmer-effects": "^1.0.4"
   }
 }
