@@ -5,6 +5,8 @@ import { SWIGGY_API } from "../utils/constants";
 
 const Body = () => {
   const [listofRes, setListofRes] = useState([]);
+  const [filteredlistofRes, setFilteredListofRes] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -17,6 +19,9 @@ const Body = () => {
     setListofRes(
       json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
+    setFilteredListofRes(
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
   };
 
   return listofRes.length === 0 ? (
@@ -24,11 +29,35 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              //filter the res cards
+              const filteredRes = listofRes.filter((res) => {
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
+              });
+
+              setFilteredListofRes(filteredRes);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
             let filteredRes = listofRes.filter((res) => res.info.avgRating > 4);
-            setListofRes(filteredRes);
+            setFilteredListofRes(filteredRes);
           }}
         >
           Top rated restraunts
@@ -36,14 +65,14 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            setListofRes(listofRes);
+            setFilteredListofRes(listofRes);
           }}
         >
           Clear
         </button>
       </div>
       <div className="res-container">
-        {listofRes.map((res, _i) => (
+        {filteredlistofRes.map((res, _i) => (
           <RestaurantCard key={res?.info?.id || _i} resData={res?.info || {}} />
         ))}
       </div>

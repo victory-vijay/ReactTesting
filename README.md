@@ -25,8 +25,12 @@
 - Normal JS utility functions 
 - two very important hooks
 - useState()  - powerful state variables in react 
-                - state variables - maintains the state of the component
-                -  whenever a state variable updates, react rerenders the component 
+                - local state variables - maintains the state of the component
+                - whenever a state variable updates, react rerenders the component 
+                - Never create state hooks outside components
+                - always try to create usestate on first of the component
+                - never create a usestate in a if-else , forloop, or function (we create only in functional components)
+
 - useEffect() 
 
 # how react works behind the scenes:
@@ -59,12 +63,22 @@ React renders the UI very fast, so we no need to bother about 2 time render
 # what is a hook in react ?
 - it is nothing but a normal JS function
 - usd for specific purpose
+- When ever there is a change in state variable, react triggers a reconcialiation cycle(rerender of component)
 
 # useEffect()
 - it will two args, callback fun and dependency array
 # When will it render
-- when a component is called, it will render the component. and as soon as the render cycle is finished, it will just quickly useEffect is called.
+- when a component is called, it will render the component. and as soon as the render cycle is finished, it will just quickly call useEffect.
+# dependency array in useEffect
+- if no dependency array, its called on every component render 
+- if empty array [], its called on only initial render(just once)
+- if something is array, it will only be called when that variable changes
 
 # CORS
 - Our browser wont allow us to call another origin
 
+# 2 types routing in web apps
+- Client side routing 
+    - when we route to a page, we are only rendering that component instead of entire page.
+- Server side routing 
+    - make a network call and the entire page reloads, then it is server side rendering.
