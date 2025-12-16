@@ -58,3 +58,24 @@
 .filter {
   display: flex;
 }
+.resMenu {
+  list-style-type: none;
+}
+.itemCard {
+  border: 1px xolid black;
+  background-color: lightgray;
+  padding: 10px;
+  margin: 5px;
+}
+.eachCard {
+  display: flex;
+  justify-content: space-between;
+}
+.cardImage {
+  width: 150px;
+}
+.userCard {
+  padding: 10px;
+  border: 1px solid black;
+  margin: 10px;
+}

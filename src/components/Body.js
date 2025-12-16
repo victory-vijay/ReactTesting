@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listofRes, setListofRes] = useState([]);
@@ -16,11 +17,12 @@ const Body = () => {
     const data = await fetch(`${SWIGGY_API}`);
 
     const json = await data.json();
+    console.log(json);
     setListofRes(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
     setFilteredListofRes(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
 
@@ -56,7 +58,9 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            let filteredRes = listofRes.filter((res) => res.info.avgRating > 4);
+            let filteredRes = listofRes.filter(
+              (res) => res.info.avgRating > 4.5
+            );
             setFilteredListofRes(filteredRes);
           }}
         >
@@ -73,7 +77,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredlistofRes.map((res, _i) => (
-          <RestaurantCard key={res?.info?.id || _i} resData={res?.info || {}} />
+          <Link key={res?.info?.id || _i} to={"/restaurants/" + res?.info?.id}>
+            <RestaurantCard resData={res?.info || {}} />
+          </Link>
         ))}
       </div>
     </div>

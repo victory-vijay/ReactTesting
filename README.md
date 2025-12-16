@@ -82,3 +82,6 @@ React renders the UI very fast, so we no need to bother about 2 time render
     - when we route to a page, we are only rendering that component instead of entire page.
 - Server side routing 
     - make a network call and the entire page reloads, then it is server side rendering.
+
+
+# class based components   
